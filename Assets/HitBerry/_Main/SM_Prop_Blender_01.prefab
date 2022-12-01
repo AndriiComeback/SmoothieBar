@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33462564078991820}
   - component: {fileID: 23475050992162060}
   m_Layer: 0
-  m_Name: SM_Prop_Blender_Jug_01
+  m_Name: MixerCup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,6 +96,8 @@ GameObject:
   - component: {fileID: 33872579904509522}
   - component: {fileID: 23951655326940150}
   - component: {fileID: 64195508571456226}
+  - component: {fileID: 473395149}
+  - component: {fileID: 473395154}
   m_Layer: 0
   m_Name: SM_Prop_Blender_01
   m_TagString: Untagged
@@ -183,6 +185,39 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43133441357394016, guid: b8dd9415aaacfab42a5c35a932e3a950, type: 2}
+--- !u!95 &473395149
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707807610190462}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &473395154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707807610190462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c8d908db5d7f4940a5fca848738c433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blenderCover: {fileID: 1949344047188952}
 --- !u!1 &1949344047188952
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +230,7 @@ GameObject:
   - component: {fileID: 33426495932501406}
   - component: {fileID: 23441774327627198}
   m_Layer: 0
-  m_Name: SM_Prop_Blender_Lid_01
+  m_Name: MixerCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,8 +243,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949344047188952}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0000002561456, y: 0.26202703, z: -0.0000000938919}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.25, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
