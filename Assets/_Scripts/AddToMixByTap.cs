@@ -27,6 +27,10 @@ public class AddToMixByTap : MonoBehaviour {
         if (Physics.Raycast(ray, out hit)) {
             if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Mixable")) {
                 EventManager.FruitTapped(hit.collider.gameObject);
+            } /*else if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Mixer")) { // temp dev
+                hit.collider.gameObject.GetComponent<Mixer>().OpenMixer();
+            } */else if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("MixerButton")) {
+                EventManager.MixButtonTapped();
             }
         }
     }

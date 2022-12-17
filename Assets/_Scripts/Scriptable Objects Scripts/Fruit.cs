@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Smoothie Bar/Fruit")]
 public class Fruit : ScriptableObject
 {
-    public GameObject prefab;
+    public new string name;
     public Color color;
 }

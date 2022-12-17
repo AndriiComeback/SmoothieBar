@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff2b85c84f350d46ae4aa78e8b7b4c9, type: 3}
   m_Name: Banana
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7839525958514691961, guid: 5cc096575861513489af46719084298d, type: 3}
-  color: {r: 0, g: 0, b: 0, a: 0}
+  name: Banana
+  color: {r: 0.9843137, g: 0.8666667, b: 0.54509807, a: 0}

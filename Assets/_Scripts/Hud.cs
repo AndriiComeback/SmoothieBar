@@ -11,16 +11,15 @@ public class Hud : MonoBehaviour {
             return m_instance;
         }
     }
-    [SerializeField] private TMP_Text[] m_scoreValue;
+    [SerializeField] private TMP_Text m_resultValue;
     [SerializeField] private Slider m_musicSlider;
     [SerializeField] private Slider m_soundSlider;
     [SerializeField] private CanvasGroup m_LevelCompletedWindow;
     private GraphicRaycaster m_raycaster;
 
-    public void UpdateScoreValue(int value) {
-        for (int i = 0; i < m_scoreValue.Length; i++) {
-            m_scoreValue[i].text = value.ToString();
-        }
+    public void ShowLevelResults(int value) {
+        ShowWindow(m_LevelCompletedWindow);
+        m_resultValue.text = value.ToString();
     }
     private void Awake() {
         m_instance = this;
@@ -40,19 +39,19 @@ public class Hud : MonoBehaviour {
         Application.Quit();
     }
     public void SetMusicVolume(float volume) {
-        Controller.Instance.Audio.MusicVolume = volume;
+        GameController.Instance.Audio.MusicVolume = volume;
     }
     public void SetSoundVolume(float volume) {
-        Controller.Instance.Audio.SfxVolume = volume;
+        GameController.Instance.Audio.SfxVolume = volume;
     }
     public void UpdateOptions() {
-        m_musicSlider.value = Controller.Instance.Audio.MusicVolume;
-        m_soundSlider.value = Controller.Instance.Audio.SfxVolume;
+        m_musicSlider.value = GameController.Instance.Audio.MusicVolume;
+        m_soundSlider.value = GameController.Instance.Audio.SfxVolume;
     }
     public void Next() {
-        Controller.Instance.InitializeLevel();
+        GameController.Instance.InitializeLevel();
     }
     public void PlayPreviewSound() {
-        Controller.Instance.Audio.PlaySound("Drop");
+        GameController.Instance.Audio.PlaySound("Drop");
     }
 }

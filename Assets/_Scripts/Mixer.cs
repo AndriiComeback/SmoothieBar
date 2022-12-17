@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-enum MixerState { Opened, Closed, InProgress } 
+enum MixerState { Opened, Closed, IsOpening, IsClosing } 
 public class Mixer : MonoBehaviour
 {
     [SerializeField] private GameObject blenderCover;
@@ -11,32 +11,31 @@ public class Mixer : MonoBehaviour
     [SerializeField] private float animationTimeInSeconds = .25f;
     private MixerState state;
     private float timeOpened;
+    private Sequence sequence;
     private void Awake() {
         state = MixerState.Closed;
         timeOpened = 0f;
+        sequence = DOTween.Sequence();
     }
     public void OpenMixer() {
-        if (Equals(state, MixerState.Closed)) {
+        if (Equals(state, MixerState.Closed) || Equals(state, MixerState.IsClosing)) {
             StartCoroutine(OpenMixerInner());
         } else if (Equals(state, MixerState.Opened)) {
             timeOpened = 0f;
         }
     }
     private IEnumerator OpenMixerInner() {
-        state = MixerState.InProgress;
-
-        Sequence mySequence = DOTween.Sequence();
-        mySequence.Append(blenderCover.transform.DORotate(new Vector3(0, 0, -90), animationTimeInSeconds, RotateMode.LocalAxisAdd))
-            .Join(blenderCover.transform.DOLocalMove(new Vector3(.06f, .35f, 0), animationTimeInSeconds));
+        state = MixerState.IsOpening;
+        sequence.Append(blenderCover.transform.DORotate(new Vector3(0, 0, -90), animationTimeInSeconds, RotateMode.LocalAxisAdd))
+            .Join(blenderCover.transform.DOLocalMove(new Vector3(.06f, .37f, .05f), animationTimeInSeconds));
 
         yield return new WaitForSeconds(animationTimeInSeconds);
         state = MixerState.Opened;
     }
     private IEnumerator CloseMixerCupInner() {
-        state = MixerState.InProgress;
+        state = MixerState.IsClosing;
 
-        Sequence mySequence = DOTween.Sequence();
-        mySequence.Append(blenderCover.transform.DORotate(new Vector3(0, 0, 90), animationTimeInSeconds, RotateMode.LocalAxisAdd))
+        sequence.Append(blenderCover.transform.DORotate(new Vector3(0, 0, 90), animationTimeInSeconds, RotateMode.LocalAxisAdd))
             .Join(blenderCover.transform.DOLocalMove(new Vector3(0f, .25f, 0), animationTimeInSeconds));
 
         yield return new WaitForSeconds(animationTimeInSeconds);

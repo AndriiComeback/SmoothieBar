@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff2b85c84f350d46ae4aa78e8b7b4c9, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1837531116768735197, guid: 6043b637172ad65448af541589d01037, type: 3}
+  name: Apple
   color: {r: 0.9607843, g: 0.6117647, b: 0.60784316, a: 0}
