@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0dcf78c1245d944da714472b331988c, type: 3}
+  m_Name: Level03
+  m_EditorClassIdentifier: 
+  fruits:
+  - {fileID: 11400000, guid: 3d32d057bf48ad2419c182d3ef1945a2, type: 2}
+  - {fileID: 11400000, guid: e6920ba9a41d7564c97f404a894b711e, type: 2}
+  - {fileID: 11400000, guid: ec99e5b4cc6c1204095b7bdbaec4085b, type: 2}
+  targetColor: {r: 0.8392157, g: 0.7176471, b: 0.74509805, a: 1}
+  targetPercent: 90
