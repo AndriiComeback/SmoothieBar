@@ -8,8 +8,8 @@ public class Mixer : MonoBehaviour
 {
     [SerializeField] private GameObject blenderCover;
     [SerializeField] private GameObject cup;
-    [SerializeField] private float openTimeLenght = 1.5f;
-    [SerializeField] private float animationTimeInSeconds = .1f;
+    [SerializeField] private float openTimeLenght = 0.75f;
+    [SerializeField] private float animationTimeInSeconds = .05f;
     private MixerState state;
     private float timeOpened;
     private Vector3 cupInitPosition;
@@ -35,9 +35,8 @@ public class Mixer : MonoBehaviour
     }
     public float MixMixer() {
         state = MixerState.IsMixing;
-        Sequence sequenceCup = DOTween.Sequence();
-        sequenceCup.Append(blenderCover.transform.DORotate(new Vector3(0, 0, 90), animationTimeInSeconds, RotateMode.LocalAxisAdd))
-            .Join(blenderCover.transform.DOMove(cupInitPosition, animationTimeInSeconds));
+        blenderCover.transform.position = cupInitPosition;
+        blenderCover.transform.rotation = cupInitRotation;
 
         Sequence sequence = DOTween.Sequence();
         sequence.Append(cup.transform.DORotate(GetRandomFlick() * 400, animationTimeInSeconds / 2f))
@@ -53,7 +52,6 @@ public class Mixer : MonoBehaviour
     }
     IEnumerator MixMixerInner() {
         yield return new WaitForSeconds(animationTimeInSeconds * 4);
-        blenderCover.transform.rotation = cupInitRotation;
         state = MixerState.Closed;
     }
     private IEnumerator OpenMixerInner() {

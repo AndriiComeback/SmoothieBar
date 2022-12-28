@@ -1477,6 +1477,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1357618997}
     - target: {fileID: 473395154, guid: 3a04d7ac33eeb7c43bf09f56e3dbcf95, type: 3}
+      propertyPath: openTimeLenght
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 473395154, guid: 3a04d7ac33eeb7c43bf09f56e3dbcf95, type: 3}
+      propertyPath: animationTimeInSeconds
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 473395154, guid: 3a04d7ac33eeb7c43bf09f56e3dbcf95, type: 3}
       propertyPath: buttonPressedTransform
       value: 
       objectReference: {fileID: 0}
@@ -9315,9 +9323,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Hud, Assembly-CSharp
-        m_MethodName: Quit
+      - m_Target: {fileID: 1691413618}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: QuitApp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

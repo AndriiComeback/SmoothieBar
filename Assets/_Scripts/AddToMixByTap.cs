@@ -12,14 +12,11 @@ public class AddToMixByTap : MonoBehaviour {
             //hit.collider.GetComponent<MeshRenderer>().material.color = newColor;
         }
 
-#if UNITY_EDITOR
-
         if (Input.GetMouseButtonDown(0)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             HandleInput(ray);
         }
 
-#endif
     }
 
     private void HandleInput(Ray ray) {

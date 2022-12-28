@@ -85,6 +85,9 @@ public class GameController : MonoBehaviour {
         }
         InitializeLevel();
     }
+    public void QuitApp() {
+        Application.Quit();
+    }
     private void LoadFruit(GameObject fruitGameobject) {
         StartCoroutine(LoadFruitInner(fruitGameobject));
     }
