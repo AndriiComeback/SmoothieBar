@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class ColorMixerHelper
 {
-    public static float GetConformityDegreeInPercent(List<Color> colors, Color targetColor) {
+    public static (float, Color) GetConformityDegreeInPercent(List<Color> colors, Color targetColor) {
         float r = 0, g = 0, b = 0;
         foreach (Color color in colors) {
             r += color.r;
@@ -12,9 +12,19 @@ public static class ColorMixerHelper
             b += color.b;
         }
         Color result = new Color(r / colors.Count, g / colors.Count, b / colors.Count);
-        float targetSum = targetColor.r + targetColor.g + targetColor.b;
-        float resultSum = result.r + result.g + result.b;
-        float conformity = 100 - Mathf.Abs(targetSum - resultSum) / 255 * 3 * 100;
-        return conformity;
+
+        float conformity = 1 - Mathf.Abs(targetColor.r - result.r);
+        conformity *= 1 - Mathf.Abs(targetColor.g - result.g);
+        conformity *= 1 - Mathf.Abs(targetColor.b - result.b);
+        conformity *= 100;
+
+        if (conformity > 99) {
+            conformity = 100;
+        }
+        if (conformity < 0) {
+            conformity = 0;
+        }
+
+        return (conformity, result);
     }
 }

@@ -8,4 +8,5 @@ public class LevelParameter : ScriptableObject
 {
     public List<Fruit> fruits;
     public Color targetColor;
+    public int targetPercent = 90;
 }

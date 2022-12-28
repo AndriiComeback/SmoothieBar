@@ -10,6 +10,7 @@ public class CustomerController : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Transform barPoint;
     [SerializeField] private RuntimeAnimatorController idle;
+    [SerializeField] private RuntimeAnimatorController move;
 
     public static CustomerController Instance;
     private void Awake() {
@@ -21,7 +22,9 @@ public class CustomerController : MonoBehaviour
     IEnumerator CallNewCustomerInner(Color targetColor) {
         float time = 2;
         GameObject customer = ObjectPooler.Instance.SpawnFromPool(customerNameInPool, spawnPoint.position, spawnPoint.rotation);
-        customer.GetComponentInChildren<Image>().color = targetColor;
+        Image[] image = customer.GetComponentsInChildren<Image>();
+        image[image.Length - 1].color = targetColor;
+        customer.GetComponent<Animator>().runtimeAnimatorController = move;
         Sequence mySequence = DOTween.Sequence();
         mySequence.Append(customer.transform.DOMove(barPoint.position, time));
         mySequence.Join(customer.transform.DORotate(new Vector3(0, 160, 0), time).SetEase(Ease.Linear));

@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour {
     private List<Color> colors = new List<Color>();
     [SerializeField] private Audio m_audio = new Audio();
     [SerializeField] private const string fruitHalvesName = "Halves";
+    [SerializeField] private GameObject smoothie;
+    [SerializeField] private Material smoothieMaterial;
     public Audio Audio {
         set { m_audio = value; }
         get { return m_audio; }
@@ -64,13 +66,14 @@ public class GameController : MonoBehaviour {
 
     }
     public void InitializeLevel() {
+        smoothie.SetActive(false);
         ObjectPooler.Instance.ResetPool();
 
         colors = new List<Color>();
         int i = 0;
 
         foreach (var fruit in levels[currentLevel].fruits) {
-            ObjectPooler.Instance.SpawnFromPool(fruit.name, spawnPoints[i].position, Quaternion.Euler(0, 90, 0));
+            ObjectPooler.Instance.SpawnFromPool(fruit.name, spawnPoints[i].position, Quaternion.Euler(15, 70, 0));
             i++;
         }
         CustomerController.Instance.CallNewCustomer(levels[currentLevel].targetColor);
@@ -109,19 +112,36 @@ public class GameController : MonoBehaviour {
                 spawnPoint.rotation, layerMask);
 
             if (hitColliders.Length == 0) {
-                if (i < spawnPoints.Count) {
+                if (i < spawnPoints.Count && i < levels[currentLevel].fruits.Count) {
                     if (fruitGameobject.CompareTag(levels[currentLevel].fruits[i].name)) {
-                        ObjectPooler.Instance.SpawnFromPool(fruitGameobject.tag, spawnPoints[i].position, Quaternion.Euler(0, 90, 0));
+                        ObjectPooler.Instance.SpawnFromPool(fruitGameobject.tag, spawnPoints[i].position, Quaternion.Euler(15, 70, 0));
                         colors.Add(levels[currentLevel].fruits[i].color);
                     }
                 }
             }
             i++;
         }
+
+        yield return new WaitForSeconds(.25f);
+        mixer.MoveMixer();
     }
     private void Mix() {
-        int result = (int)ColorMixerHelper.GetConformityDegreeInPercent(colors, levels[currentLevel].targetColor);
-        Hud.Instance.ShowLevelResults(result);
+        if (colors == null || colors.Count == 0) {
+            //Debug.Log("Add fruits to mix!");
+            return;
+        }
+
+        (float result, Color resultColor) = ColorMixerHelper.GetConformityDegreeInPercent(colors, levels[currentLevel].targetColor);
+        smoothieMaterial.color = resultColor;
+        StartCoroutine(MixCourutine((int)result));
+        
+    }
+    IEnumerator MixCourutine(int result) {
+        float time = mixer.MixMixer();
+        yield return new WaitForSeconds(time);
+        ObjectPooler.Instance.ResetPool("Customer");
+        smoothie.SetActive(true);
+        Hud.Instance.ShowLevelResults(result, result > levels[currentLevel].targetPercent);
     }
     void OnDrawGizmosSelected() {
         foreach (Transform spawnPoint in spawnPoints) {

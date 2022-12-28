@@ -12,14 +12,16 @@ public class Hud : MonoBehaviour {
         }
     }
     [SerializeField] private TMP_Text m_resultValue;
+    [SerializeField] private TMP_Text m_victoryValue;
     [SerializeField] private Slider m_musicSlider;
     [SerializeField] private Slider m_soundSlider;
     [SerializeField] private CanvasGroup m_LevelCompletedWindow;
     private GraphicRaycaster m_raycaster;
 
-    public void ShowLevelResults(int value) {
+    public void ShowLevelResults(int value, bool isVictory) {
         ShowWindow(m_LevelCompletedWindow);
-        m_resultValue.text = value.ToString();
+        m_resultValue.text = $"{value.ToString()}%";
+        m_victoryValue.text = isVictory ? "Level complete!": "Try again! (dev mode: next level enabled)";
     }
     private void Awake() {
         m_instance = this;

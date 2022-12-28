@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Level02
   m_EditorClassIdentifier: 
   fruits:
-  - {fileID: 11400000, guid: ef588e65f0e30ef4da91c2ae0e6cbd86, type: 2}
-  - {fileID: 11400000, guid: ec99e5b4cc6c1204095b7bdbaec4085b, type: 2}
-  targetColor: {r: 0.11792451, g: 0.36052185, b: 1, a: 1}
+  - {fileID: 11400000, guid: 68c653e2513f2e146922e4d8ae97bb00, type: 2}
+  - {fileID: 11400000, guid: 642733dfbb6210440ae3fb75bbc03f84, type: 2}
+  - {fileID: 11400000, guid: df418505254bb284bb0e436a538eb1f6, type: 2}
+  targetColor: {r: 0.8862745, g: 0.7019608, b: 0.6313726, a: 1}
+  targetPercent: 90

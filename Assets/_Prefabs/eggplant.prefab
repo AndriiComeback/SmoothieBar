@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2323202906823770918}
   - component: {fileID: 1698551029134380163}
   - component: {fileID: 3492119713268185161}
-  - component: {fileID: 1698551029134380165}
   - component: {fileID: 1698551029134380164}
+  - component: {fileID: 817922120907161667}
   m_Layer: 3
   m_Name: eggplant
   m_TagString: Eggplant
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3131827002144889244}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,19 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1698551029134380165
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3131827002144889244}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1809869, y: 0.32885253, z: 0.15068817}
-  m_Center: {x: 0.011524446, y: 0.17829937, z: 0.00074338913}
 --- !u!54 &1698551029134380164
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -116,3 +103,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!136 &817922120907161667
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3131827002144889244}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.09737358
+  m_Height: 0.34864858
+  m_Direction: 1
+  m_Center: {x: -0.010404713, y: 0.17432429, z: 0}

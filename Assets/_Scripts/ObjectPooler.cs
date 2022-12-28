@@ -48,10 +48,12 @@ public class ObjectPooler : MonoBehaviour
 
         return objectToSpawn;
     }
-    public void ResetPool() {
+    public void ResetPool(string exception = "") {
         foreach (var record in poolDictionary) {
-            foreach (var gameObject in record.Value) {
-                gameObject.SetActive(false);
+            if (!string.Equals(record.Key, exception)) {
+                foreach (var obj in record.Value) {
+                    obj.SetActive(false);
+                }
             }
         }
     }
